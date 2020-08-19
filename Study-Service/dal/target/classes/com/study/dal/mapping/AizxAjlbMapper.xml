@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.study.dal.mapper.AizxAjlbMapper">
+  <resultMap id="BaseResultMap" type="com.study.bean.entity.AizxAjlb">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="ywlbdm" jdbcType="VARCHAR" property="ywlbdm" />
+    <result column="ywlbmc" jdbcType="VARCHAR" property="ywlbmc" />
+    <result column="ajlbdm" jdbcType="VARCHAR" property="ajlbdm" />
+    <result column="ajlbmc" jdbcType="VARCHAR" property="ajlbmc" />
+    <result column="sfqy" jdbcType="INTEGER" property="sfqy" />
+    <result column="cjrid" jdbcType="VARCHAR" property="cjrid" />
+    <result column="cjr" jdbcType="VARCHAR" property="cjr" />
+    <result column="cjdw_dm" jdbcType="VARCHAR" property="cjdwDm" />
+    <result column="cjdw_mc" jdbcType="VARCHAR" property="cjdwMc" />
+    <result column="cjsj" jdbcType="TIMESTAMP" property="cjsj" />
+    <result column="xgrid" jdbcType="VARCHAR" property="xgrid" />
+    <result column="xgr" jdbcType="VARCHAR" property="xgr" />
+    <result column="xgdw_dm" jdbcType="VARCHAR" property="xgdwDm" />
+    <result column="xgdw_mc" jdbcType="VARCHAR" property="xgdwMc" />
+    <result column="xgsj" jdbcType="TIMESTAMP" property="xgsj" />
+    <result column="ylzd1" jdbcType="VARCHAR" property="ylzd1" />
+    <result column="ylzd2" jdbcType="VARCHAR" property="ylzd2" />
+    <result column="ylzd3" jdbcType="VARCHAR" property="ylzd3" />
+    <result column="ylzd4" jdbcType="VARCHAR" property="ylzd4" />
+    <result column="ylzd5" jdbcType="TIMESTAMP" property="ylzd5" />
+    <result column="ylzd6" jdbcType="TIMESTAMP" property="ylzd6" />
+  </resultMap>
+</mapper>

@@ -1,0 +1,76 @@
+server:
+  port: 8090
+spring:
+  application:
+    name: web
+  ####################################datasource####################################
+  datasource:
+    jcy-db:
+      type: com.alibaba.druid.pool.DruidDataSource
+      url: jdbc:mysql://rm-bp13130ii07212on4no.mysql.rds.aliyuncs.com:3306/chinaoly_jcy?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&useSSL=false
+      username: chinaoly_jcy
+      password: Chinaoly1234
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      druid:
+        filters: stat,wall,logback
+        max-active: 100
+        initial-size: 1
+        max-wait: 60000
+        min-idle: 1
+        time-between-eviction-runs-millis: 60000
+        min-evictable-idle-time-millis: 300000
+        validation-query: select 1
+        test-while-idle: true
+        test-on-borrow: false
+        test-on-return: false
+        pool-prepared-statements: true
+        max-open-prepared-statements: 50
+        max-pool-prepared-statement-per-connection-size: 20
+    xtgl-db:
+      type: com.alibaba.druid.pool.DruidDataSource
+      url: jdbc:mysql://rm-bp12688abt1q71cjvpo.mysql.rds.aliyuncs.com:3306/chinaoly_xtgl?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&useSSL=false
+      username: chinaoly_zgj
+      password: Chinaoly1234
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      druid:
+        filters: stat,wall,logback
+        max-active: 100
+        initial-size: 1
+        max-wait: 60000
+        min-idle: 1
+        time-between-eviction-runs-millis: 60000
+        min-evictable-idle-time-millis: 300000
+        validation-query: select 1
+        test-while-idle: true
+        test-on-borrow: false
+        test-on-return: false
+        pool-prepared-statements: true
+        max-open-prepared-statements: 50
+        max-pool-prepared-statement-per-connection-size: 20
+    ora-db:
+      type: com.alibaba.druid.pool.DruidDataSource
+      driver-class-name: oracle.jdbc.driver.OracleDriver
+      url: jdbc:oracle:thin:@192.168.1.151:1521:ORCL
+      username: chinaoly
+      password: chinaoly
+      druid:
+        filters: stat,wall,logback
+        max-active: 100
+        initial-size: 1
+        max-wait: 60000
+        min-idle: 1
+        time-between-eviction-runs-millis: 60000
+        min-evictable-idle-time-millis: 300000
+        validation-query: select 1
+        test-while-idle: true
+        test-on-borrow: false
+        test-on-return: false
+        pool-prepared-statements: true
+        max-open-prepared-statements: 50
+        max-pool-prepared-statement-per-connection-size: 20
+###################### swagger ######################
+swagger:
+  enabled: true
+
+mybatis:
+  mapper-locations: classpath*:/com/**/dal/mapping/**/*.xml
