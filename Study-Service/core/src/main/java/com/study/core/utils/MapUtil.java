@@ -1,4 +1,4 @@
-package com.study.core.util;
+package com.study.core.utils;
 
 import java.util.*;
 

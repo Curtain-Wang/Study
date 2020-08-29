@@ -2,7 +2,7 @@ package com.study.service.business.oraDB;
 
 import com.study.core.algorithm.BjjlGdsz;
 import com.study.core.base.bean.ResponseResult;
-import com.study.core.util.MapUtil;
+import com.study.core.utils.MapUtil;
 import com.study.dal.mapper.DbFieldInfoMapper;
 import com.study.service.api.oraDB.DbFieldInfoService;
 import org.springframework.stereotype.Service;
