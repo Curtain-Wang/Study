@@ -1,6 +1,7 @@
 package com.study.web.controller;
 
 import com.study.bean.request.dbField.DbFieldInfoRequest;
+import com.study.core.annotation.PermissionsAnnotation;
 import com.study.core.base.bean.ResponseResult;
 import com.study.service.api.oraDB.DbFieldInfoService;
 import io.swagger.annotations.Api;
@@ -27,6 +28,7 @@ public class DbFieldInfoController {
 
     @PostMapping("/getMostFieldInfo")
     @ApiOperation(value = "getMostFieldInfo", notes = "获取高相似度的字段信息")
+    @PermissionsAnnotation()
     public ResponseResult getMostFieldInfo(@Valid DbFieldInfoRequest dbFieldInfoRequest){
         return dbFieldInfoService.getMostFieldInfo(dbFieldInfoRequest.getComments());
     }

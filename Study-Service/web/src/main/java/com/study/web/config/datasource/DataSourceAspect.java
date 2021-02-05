@@ -18,7 +18,8 @@ import org.springframework.stereotype.Component;
 @Aspect
 @Order(0)
 public class DataSourceAspect {
-
+    
+    //这个路径表达式的含义就是 返回值为任意类型，com.study.service.api.*.*类的任意方法名参数也是任意
     @Pointcut("execution( * com.study.service.api.*.*.*(..))")
     public void dataSource(){}
 
