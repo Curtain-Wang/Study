@@ -22,23 +22,12 @@ import java.util.HashMap;
 @EnableAutoConfiguration(exclude = DataSourceAutoConfiguration.class)
 public class DynamicDataSourceConfig {
 
-    @Bean(name = "jcyDB")
-    @ConfigurationProperties(prefix = "spring.datasource.jcy-db")
-    public DataSource jcyDB(){
+    @Bean(name = "db01")
+    @ConfigurationProperties(prefix = "spring.datasource.db01")
+    public DataSource db01(){
         return new DruidDataSource();
     }
 
-    @Bean(name = "xtglDB")
-    @ConfigurationProperties(prefix = "spring.datasource.xtgl-db")
-    public DataSource xtglDB(){
-        return new DruidDataSource();
-    }
-
-    @Bean(name = "oraDB")
-    @ConfigurationProperties(prefix = "spring.datasource.ora-db")
-    public DataSource oraDB(){
-        return new DruidDataSource();
-    }
 
     @Primary
     @Bean(name = "dynamicDataSource")
@@ -49,11 +38,9 @@ public class DynamicDataSourceConfig {
                 return DataSourceContextHolder.getDataSource();
             }
         };
-        dynamicDataSource.setDefaultTargetDataSource(jcyDB());
+        dynamicDataSource.setDefaultTargetDataSource(db01());
         HashMap<Object,Object> dataSourceMap = new HashMap<>();
-        dataSourceMap.put(DataSourceEnum.JCY_DB.getCode(),jcyDB());
-        dataSourceMap.put(DataSourceEnum.XTGL_DB.getCode(),xtglDB());
-        dataSourceMap.put(DataSourceEnum.ORA_DB.getCode(), oraDB());
+        dataSourceMap.put(DataSourceEnum.DB01.getCode(),db01());
         dynamicDataSource.setTargetDataSources(dataSourceMap);
         dynamicDataSource.afterPropertiesSet();
         return dynamicDataSource;

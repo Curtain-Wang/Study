@@ -7,9 +7,7 @@ package com.study.web.config.datasource;
  */
 public enum DataSourceEnum {
 
-    JCY_DB("jcyDB", "检察院"),
-    XTGL_DB("xtglDB", "系统管理"),
-    ORA_DB("oraDB", "ORACLE数据库");
+    DB01("db01", "一号数据库");
 
 
     private String code;
