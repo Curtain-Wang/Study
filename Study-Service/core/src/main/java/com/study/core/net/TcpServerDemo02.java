@@ -1,9 +1,6 @@
 package com.study.core.net;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -25,6 +22,9 @@ public class TcpServerDemo02 {
         while ((len = is.read(buffer)) != -1){
             fos.write(buffer, 0, len);
         }
+        //通知客户端接收完毕了
+        OutputStream os = socket.getOutputStream();
+        os.write("我已经接收完了，你可以断开了".getBytes());
         //关闭资源
         fos.close();
         is.close();
