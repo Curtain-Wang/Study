@@ -5,7 +5,9 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -31,7 +33,8 @@ public class DeptController {
         String fileuri = dirpath + File.separator + filename;
         deptService.export(fileuri);
 
-        String name = new String("信息.xls".getBytes("UTF-8"), "ISO-8859-1");
+//        String name = new String("信息.xls".getBytes("UTF-8"), "ISO-8859-1");
+        String name = "info.xls";
         response.setHeader("Content-Disposition", "attachment:filename=" + name);
         InputStream in = new FileInputStream(new File(fileuri));
         OutputStream out = response.getOutputStream();
@@ -41,5 +44,11 @@ public class DeptController {
         }
         in.close();
         out.close();
+    }
+
+    @PostMapping("/upload")
+    @ApiOperation(value = "upload", notes = "上传部门列表")
+    public void upload(MultipartFile file) throws Exception {
+        deptService.upload(file);
     }
 }

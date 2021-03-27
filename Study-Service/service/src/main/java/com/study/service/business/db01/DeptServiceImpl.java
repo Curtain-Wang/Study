@@ -1,5 +1,6 @@
 package com.study.service.business.db01;
 
+import cn.hutool.poi.excel.ExcelReader;
 import cn.hutool.poi.excel.ExcelUtil;
 import cn.hutool.poi.excel.ExcelWriter;
 import com.study.bean.entity.Dept;
@@ -7,7 +8,9 @@ import com.study.dal.mapper.DeptMapper;
 import com.study.service.api.db01.DeptService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 
 @Service
@@ -29,5 +32,19 @@ public class DeptServiceImpl implements DeptService {
         writer.write(list, true);
         // 关闭writer，释放内存
         writer.close();
+    }
+
+    @Override
+    public void upload(MultipartFile file) {
+        try {
+            ExcelReader reader =  ExcelUtil.getReader(file.getInputStream());
+            List<Dept> list = reader.readAll(Dept.class);
+            if (list != null){
+                for (Dept dept : list)
+                    deptMapper.insertSelective(dept);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
