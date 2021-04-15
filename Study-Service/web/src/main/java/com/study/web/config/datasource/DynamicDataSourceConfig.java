@@ -1,6 +1,7 @@
 package com.study.web.config.datasource;
 
 import com.alibaba.druid.pool.DruidDataSource;
+import com.study.bean.enums.DataSourceEnum;
 import com.study.core.config.DataSourceContextHolder;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;

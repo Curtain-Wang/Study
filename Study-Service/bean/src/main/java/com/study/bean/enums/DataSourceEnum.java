@@ -1,4 +1,4 @@
-package com.study.web.config.datasource;
+package com.study.bean.enums;
 
 /**
  * @author ：Curtain
