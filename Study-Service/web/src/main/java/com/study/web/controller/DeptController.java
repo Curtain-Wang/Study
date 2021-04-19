@@ -1,5 +1,6 @@
 package com.study.web.controller;
 
+import com.study.bean.exception.ApiException;
 import com.study.service.api.db01.DeptService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -50,5 +51,29 @@ public class DeptController {
     @ApiOperation(value = "upload", notes = "上传部门列表")
     public void upload(MultipartFile file) throws Exception {
         deptService.upload(file);
+    }
+
+    @GetMapping("apiexception")
+    @ApiOperation(value = "apiException", notes = "定义异常捕获测试")
+    public boolean apiException(){
+        if (true)
+            throw  new ApiException("-1", "自定义异常");
+        return true;
+    }
+
+    @GetMapping("nullpointexception")
+    @ApiOperation(value = "nullpointexception", notes = "空指针异常")
+    public boolean nullPointException(){
+        String s = null;
+        s.equals("123");
+        return true;
+    }
+
+    @GetMapping("numberformatexception")
+    @ApiOperation(value = "numberformatexception", notes = "强转类型异常")
+    public boolean numberFormatException(){
+        String s = "qwe123";
+        Integer.parseInt(s);
+        return true;
     }
 }
