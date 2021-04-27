@@ -5,9 +5,14 @@ import com.study.bean.exception.ApiException;
 import com.study.bean.response.ResultBody;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+
+import javax.validation.ConstraintDefinitionException;
+import javax.validation.ConstraintViolationException;
+import java.util.stream.Collectors;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
@@ -37,6 +42,25 @@ public class GlobalExceptionHandler {
         return ResultBody.error(ResponseEnum.BODY_NOT_MATCH);
     }
 
+    /**
+     * 捕获全局入参错误异常
+     * @param e
+     * @return
+     */
+    @ExceptionHandler(ConstraintViolationException.class)
+    public ResultBody handleConstraintViolationException(ConstraintViolationException e){
+        return ResultBody.error(e.getConstraintViolations().stream().map(d -> d.getMessageTemplate()).collect(Collectors.joining(",")));
+    }
+
+    /**
+     * 捕获全局入参错误异常
+     * @param e
+     * @return
+     */
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResultBody handleGlobalException(MethodArgumentNotValidException e){
+        return ResultBody.error(e.getBindingResult().getAllErrors().stream().map(a -> a.getDefaultMessage()).collect(Collectors.joining(",")));
+    }
 
     /**
      * 处理其他异常

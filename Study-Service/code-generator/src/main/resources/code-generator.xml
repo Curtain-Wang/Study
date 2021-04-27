@@ -68,7 +68,7 @@
         <!--<table tableName="t_spbk_camera" domainObjectName="SpbkCamera"/>-->
 
         <!--<table tableName="t_spbk_import_record" domainObjectName="SpbkImportRecord"/>-->
-        <table tableName="person" domainObjectName="Person"/>
+<!--        <table tableName="person" domainObjectName="Person"/>-->
     </context>
 
 </generatorConfiguration>
